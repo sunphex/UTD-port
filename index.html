@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Utkarsh Dixit — AI Engineer</title>
+  <meta name="description" content="Utkarsh Dixit — AI Engineer building agentic AI systems, multi-agent orchestration and n8n / MCP workflow automation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;800&family=Space+Mono:wght@400;700&family=Pacifico&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="is-loading">
+
+  <!-- SVG filters: liquid distortion (hero) + goo (drip heading) -->
+  <svg class="defs" aria-hidden="true" width="0" height="0">
+    <filter id="liquid" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence id="liquid-noise" type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="2" seed="3" result="noise" />
+      <feDisplacementMap id="liquid-map" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9" result="goo" />
+      <feBlend in="SourceGraphic" in2="goo" />
+    </filter>
+  </svg>
+
+  <!-- Preloader -->
+  <div class="loader" aria-hidden="true">
+    <svg class="loader__hello" viewBox="0 0 400 160">
+      <text x="50%" y="62%" text-anchor="middle">hello</text>
+    </svg>
+    <div class="loader__wipe">
+      <span class="wipe-line"></span>
+      <span class="wipe-bar"></span>
+      <span class="wipe-box"></span>
+    </div>
+  </div>
+
+  <!-- Cursor -->
+  <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <span class="signature signature--tl">Utkarsh</span>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="hero__center">
+      <h1 class="hero__title" aria-label="Agentic AI Engineer">
+        <span class="hero__big" data-split>AGENTIC</span>
+        <span class="hero__sub">AI ENGINEER</span>
+      </h1>
+      <div class="hero__words">
+        <span>Agents</span><i></i><span class="up">Automation</span><i></i><span>Intelligence</span>
+      </div>
+      <a class="hero__scroll" href="#about">
+        <span>Scroll to explore</span>
+        <svg viewBox="0 0 16 26" width="14"><rect x="1" y="1" width="14" height="24" rx="7" /><line x1="8" y1="6" x2="8" y2="10" /></svg>
+      </a>
+    </div>
+
+    <span class="signature signature--bl">Dixit</span>
+
+    <a class="badge badge--hero" href="#contact" aria-label="Let's build together">
+      <svg viewBox="0 0 100 100" class="badge__ring">
+        <defs><path id="circ-hero" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
+        <text><textPath href="#circ-hero">LET'S BUILD TOGETHER • LET'S BUILD TOGETHER •</textPath></text>
+      </svg>
+      <span class="badge__arrow">↗</span>
+    </a>
+    <span class="hero__based">Based in Gurugram, India</span>
+  </header>
+
+  <main>
+    <!-- ============ ABOUT ============ -->
+    <section class="about" id="about">
+      <p class="eyebrow"><b>01</b><span class="rule"></span>The person behind the agents</p>
+      <h2 class="section-title gold">About Me</h2>
+
+      <svg class="string" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,60 Q500,60 1000,60" />
+      </svg>
+
+      <div class="about__grid">
+        <figure class="about__photo">
+          <span class="about__initials">UD</span>
+          <img src="assets/profile.jpg" alt="Utkarsh Dixit" onerror="this.remove()" />
+        </figure>
+
+        <div class="about__body">
+          <p class="eyebrow eyebrow--plain"><span class="rule"></span>Who am I?</p>
+          <h3 class="about__headline" data-words>
+            I build <em>AI agents</em> that think, act and <em>automate</em> real work.
+          </h3>
+          <div class="about__cols">
+            <p>I'm Utkarsh — an AI Engineer working on generative AI, LLM-powered multi-agent orchestration and n8n workflow automation. I ship agentic pipelines with GPT-4o, LangChain, LangGraph, CrewAI and the Model Context Protocol.</p>
+            <p>Before agents, I fine-tuned transformers and built computer-vision systems. I care about the unglamorous parts: tool schemas, retries, approval gates and the evals that tell you an agent is actually working.</p>
+          </div>
+          <dl class="facts">
+            <div><dt>Location</dt><dd>Gurugram, India</dd></div>
+            <div><dt>Focus</dt><dd>Agentic AI</dd></div>
+            <div><dt>Projects</dt><dd>15+ shipped</dd></div>
+            <div><dt>Education</dt><dd>MTech AI · 9.38</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERTISE ============ -->
+    <section class="expertise" id="expertise">
+      <div class="float-field" aria-hidden="true"></div>
+
+      <div class="expertise__left">
+        <p class="eyebrow"><b>02</b><span class="rule"></span>Expertise</p>
+        <h2 class="expertise__title">My<br />Expertise</h2>
+        <p class="expertise__lead">I design and ship AI systems where <em>models, tools and workflows</em> work as one.</p>
+        <p class="expertise__sub">From prompt to production — I combine LLM engineering with automation and classic ML to build systems that run without babysitting.</p>
+        <ul class="tags">
+          <li>Python</li><li>LangGraph</li><li>CrewAI</li><li>n8n</li><li>MCP</li><li>FastAPI</li><li>Docker</li><li>AWS</li>
+        </ul>
+      </div>
+
+      <ol class="services">
+        <li class="service">
+          <span class="service__icon">◈</span>
+          <div>
+            <h3>Agentic AI &amp; Multi-Agent Systems</h3>
+            <p>Supervisor / sub-agent hierarchies, tool use via function calling, memory and role design for production pipelines.</p>
+            <small>LangGraph · AutoGen · CrewAI · OpenAI tools</small>
+          </div>
+          <span class="service__arrow">↗</span>
+        </li>
+        <li class="service">
+          <span class="service__icon">⟳</span>
+          <div>
+            <h3>Workflow Automation</h3>
+            <p>End-to-end n8n pipelines and MCP assistants wired into Gmail, Sheets, CRMs, Telegram and LinkedIn — with human approval gates.</p>
+            <small>n8n · MCP · REST · Google APIs</small>
+          </div>
+          <span class="service__arrow">↗</span>
+        </li>
+        <li class="service">
+          <span class="service__icon">✦</span>
+          <div>
+            <h3>LLM Fine-Tuning &amp; RAG</h3>
+            <p>Retrieval pipelines over vector stores and parameter-efficient fine-tuning for domain-specific language tasks.</p>
+            <small>LoRA · QLoRA · PEFT · FAISS · ChromaDB · Pinecone</small>
+          </div>
+          <span class="service__arrow">↗</span>
+        </li>
+        <li class="service">
+          <span class="service__icon">◎</span>
+          <div>
+            <h3>ML · NLP · Computer Vision</h3>
+            <p>Transformer fine-tuning, neural machine translation and real-time vision systems built on MediaPipe and OpenCV.</p>
+            <small>PyTorch · TensorFlow · Hugging Face · OpenCV</small>
+          </div>
+          <span class="service__arrow">↗</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="work" id="work">
+      <div class="drip" aria-hidden="true">
+        <div class="drip__goo">
+          <span class="drip__text">WORK</span>
+          <div class="drip__drops"></div>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>Agentic AI</span><i>◆</i><span>Workflow Automation</span><i>◆</i><span>LLM Engineering</span><i>◆</i><span>Computer Vision</span><i>◆</i>
+          <span>Agentic AI</span><i>◆</i><span>Workflow Automation</span><i>◆</i><span>LLM Engineering</span><i>◆</i><span>Computer Vision</span><i>◆</i>
+        </div>
+      </div>
+
+      <h2 class="work__label">My Work</h2>
+
+      <div class="stack">
+        <article class="card">
+          <div class="card__info">
+            <p class="card__kicker"><span class="rule"></span>Telegram · 01</p>
+            <h3>Personal AI Assistant</h3>
+            <p>A master agent on Telegram that routes text and voice commands to 5 supervisor agents (communication, productivity, insights, lifestyle, publishing) and 18+ sub-agents.</p>
+            <p class="card__metric"><b>1 → 5 → 18+</b> agents in one hierarchy</p>
+            <ul class="pills"><li>n8n</li><li>GPT-4o</li><li>Telegram API</li><li>Voice</li></ul>
+          </div>
+          <div class="card__visual">
+            <div class="flow"><span>Telegram</span><span>Master Agent</span><span>5 Supervisors</span><span>18+ Sub-Agents</span><span>Reply</span></div>
+            <span class="card__ghost">01</span>
+          </div>
+          <a class="badge badge--card" href="#" aria-label="View project: Personal AI Assistant">
+            <svg viewBox="0 0 100 100" class="badge__ring"><text><textPath href="#circ-card-path">VIEW PROJECT • VIEW PROJECT •</textPath></text></svg>
+            <span class="badge__arrow">↗</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="card__info">
+            <p class="card__kicker"><span class="rule"></span>Content agent · 02</p>
+            <h3>SEO Blog Writing Agent</h3>
+            <p>Takes a topic trigger through keyword research, drafting, humanised editing and SEO formatting, then waits for a Gmail approval before publishing to LinkedIn.</p>
+            <p class="card__metric"><b>~4 hrs</b> of manual work saved per post</p>
+            <ul class="pills"><li>GPT-4o</li><li>n8n</li><li>Google Trends</li><li>Gmail API</li><li>LinkedIn API</li></ul>
+          </div>
+          <div class="card__visual">
+            <div class="flow"><span>Google Trends</span><span>Keywords</span><span>GPT-4o Draft</span><span>Humanise</span><span>SEO Format</span><span>Gmail ✓</span><span>LinkedIn</span></div>
+            <span class="card__ghost">02</span>
+          </div>
+          <a class="badge badge--card" href="#" aria-label="View project: SEO Blog Writing Agent">
+            <svg viewBox="0 0 100 100" class="badge__ring"><text><textPath href="#circ-card-path">VIEW PROJECT • VIEW PROJECT •</textPath></text></svg>
+            <span class="badge__arrow">↗</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="card__info">
+            <p class="card__kicker"><span class="rule"></span>Model Context Protocol · 03</p>
+            <h3>MCP AI Assistant</h3>
+            <p>One assistant that reaches CRM, email, calendar and sheets through MCP servers — structured, modular tool orchestration instead of brittle one-off integrations.</p>
+            <p class="card__metric"><b>4 services</b> behind one conversational agent</p>
+            <ul class="pills"><li>MCP</li><li>n8n</li><li>OpenAI API</li><li>Google Calendar</li><li>CRM</li></ul>
+          </div>
+          <div class="card__visual">
+            <div class="flow"><span>Request</span><span>MCP Client</span><span>CRM</span><span>Calendar</span><span>Sheets</span><span>Email</span></div>
+            <span class="card__ghost">03</span>
+          </div>
+          <a class="badge badge--card" href="#" aria-label="View project: MCP AI Assistant">
+            <svg viewBox="0 0 100 100" class="badge__ring"><text><textPath href="#circ-card-path">VIEW PROJECT • VIEW PROJECT •</textPath></text></svg>
+            <span class="badge__arrow">↗</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="card__info">
+            <p class="card__kicker"><span class="rule"></span>Data access · 04</p>
+            <h3>Natural Language → SQL</h3>
+            <p>Translates plain-English questions into SQL using schema introspection and an iterative validate-and-retry loop, so non-technical users can query PostgreSQL and MySQL.</p>
+            <p class="card__metric"><b>Schema-aware</b> generation with validation loop</p>
+            <ul class="pills"><li>GPT-4o</li><li>n8n</li><li>PostgreSQL</li><li>MySQL</li></ul>
+          </div>
+          <div class="card__visual">
+            <div class="flow"><span>Question</span><span>Schema</span><span>GPT-4o</span><span>Validate</span><span>Run SQL</span><span>Answer</span></div>
+            <span class="card__ghost">04</span>
+          </div>
+          <a class="badge badge--card" href="#" aria-label="View project: Natural Language to SQL">
+            <svg viewBox="0 0 100 100" class="badge__ring"><text><textPath href="#circ-card-path">VIEW PROJECT • VIEW PROJECT •</textPath></text></svg>
+            <span class="badge__arrow">↗</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="card__info">
+            <p class="card__kicker"><span class="rule"></span>Computer vision · 05</p>
+            <h3>AIR Writing Canvas</h3>
+            <p>Write in the air with your index finger. MediaPipe tracks 21 hand landmarks, a finger-state heuristic switches draw / select / pause, and a CNN trained on EMNIST reads the letters.</p>
+            <p class="card__metric"><b>26-class</b> A–Z recognition, no input device</p>
+            <ul class="pills"><li>OpenCV</li><li>MediaPipe</li><li>TensorFlow</li><li>CNN</li></ul>
+          </div>
+          <div class="card__visual">
+            <div class="flow"><span>Webcam</span><span>21 Landmarks</span><span>Finger State</span><span>Canvas</span><span>EMNIST CNN</span><span>A–Z</span></div>
+            <span class="card__ghost">05</span>
+          </div>
+          <a class="badge badge--card" href="#" aria-label="View project: AIR Writing Canvas">
+            <svg viewBox="0 0 100 100" class="badge__ring"><text><textPath href="#circ-card-path">VIEW PROJECT • VIEW PROJECT •</textPath></text></svg>
+            <span class="badge__arrow">↗</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="card__info">
+            <p class="card__kicker"><span class="rule"></span>NLP benchmark · 06</p>
+            <h3>Tweet Sentiment Benchmark</h3>
+            <p>Fine-tuned BERT on 32K tweets and benchmarked it against RoBERTa, XLNet, ALBERT, DistilBERT, LSTM and Bi-LSTM.</p>
+            <p class="card__metric"><b>99.64%</b> accuracy · BERT beat RoBERTa by 1.2 F1</p>
+            <ul class="pills"><li>BERT</li><li>Hugging Face</li><li>PyTorch</li><li>7 models</li></ul>
+          </div>
+          <div class="card__visual">
+            <div class="flow"><span>32K Tweets</span><span>Tokenise</span><span>Fine-tune</span><span>7-Model Bench</span><span>99.64%</span></div>
+            <span class="card__ghost">06</span>
+          </div>
+          <a class="badge badge--card" href="#" aria-label="View project: Tweet Sentiment Benchmark">
+            <svg viewBox="0 0 100 100" class="badge__ring"><text><textPath href="#circ-card-path">VIEW PROJECT • VIEW PROJECT •</textPath></text></svg>
+            <span class="badge__arrow">↗</span>
+          </a>
+        </article>
+      </div>
+
+      <svg class="defs" aria-hidden="true" width="0" height="0">
+        <defs><path id="circ-card-path" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
+      </svg>
+
+      <div class="more">
+        <p class="eyebrow eyebrow--plain"><span class="rule"></span>More builds</p>
+        <ul>
+          <li><b>Lead Generation Agent</b><span>GPT-4o · LinkedIn · SERP API · Sheets</span></li>
+          <li><b>Minutes-of-Meeting Agent</b><span>Speech-to-text · LLM · auto-distribution</span></li>
+          <li><b>Firecrawl Scraper Agent</b><span>n8n · Firecrawl · conditional routing</span></li>
+          <li><b>English → Hindi Translation</b><span>mBART-50 · LSTM Seq2Seq · 127K pairs</span></li>
+          <li><b>Gesture Virtual Mouse</b><span>MediaPipe · PyAutoGUI · 7 gestures</span></li>
+          <li><b>Emotion, Age &amp; Gender Detection</b><span>DeepFace · real-time · ~10× less compute</span></li>
+          <li><b>Breast Cancer Detection</b><span>SVM · PCA 30→10 · 97% accuracy</span></li>
+          <li><b>Deep-Fake Detection</b><span>ResNet transfer learning + LSTM</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="experience" id="experience">
+      <p class="eyebrow"><b>03</b><span class="rule"></span>Where I've worked</p>
+      <h2 class="section-title gold">Experience</h2>
+
+      <ol class="timeline">
+        <li>
+          <span class="timeline__date">Nov 2025 — Present</span>
+          <div>
+            <h3>AI Automation Engineer <span>· Blue Ocean Global Technology</span></h3>
+            <ul>
+              <li>Built a LangChain + GPT-4o pipeline for reputation-content monitoring, cutting manual review by ~60%.</li>
+              <li>Engineered an AutoGen multi-agent system for real-time sentiment across 50+ channels, improving response SLA by 40%.</li>
+              <li>Deployed a RAG module (FAISS + OpenAI embeddings) for grounded PR response generation.</li>
+              <li>For client Girl Power Talk: LLM content workflows for 10M+ subscriber communities and an NLP candidate-screening pipeline across 40+ countries.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <span class="timeline__date">Sep — Nov 2025</span>
+          <div>
+            <h3>AI Agent Builder Intern <span>· AetherionAI</span></h3>
+            <ul><li>Designed multi-agent LLM architectures with LangGraph and AutoGen, using OpenAI function calling for autonomous enterprise workflows.</li></ul>
+          </div>
+        </li>
+        <li>
+          <span class="timeline__date">Aug — Nov 2025</span>
+          <div>
+            <h3>AI Agents Developer <span>· Dare xAI</span></h3>
+            <ul><li>Built CrewAI and LangGraph orchestration with role hierarchies and memory management for production agent pipelines.</li></ul>
+          </div>
+        </li>
+        <li>
+          <span class="timeline__date">Feb — Aug 2025</span>
+          <div>
+            <h3>AI-ML Intern <span>· Swaran Soft Support Solutions</span></h3>
+            <ul><li>Shipped 7+ n8n agentic pipelines for client use — SEO writing, lead gen, NL-to-SQL, meeting minutes, MCP assistant and web scraping.</li></ul>
+          </div>
+        </li>
+      </ol>
+
+      <div class="edu">
+        <div>
+          <p class="eyebrow eyebrow--plain"><span class="rule"></span>Education</p>
+          <ul class="edu__list">
+            <li><b>MTech, Artificial Intelligence</b><span>Bennett University · SGPA 9.38 · 2023–25</span></li>
+            <li><b>BTech, Computer Science</b><span>GLA University · 2020–23</span></li>
+            <li><b>Diploma, Computer Science</b><span>GLA University · 2017–20</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="eyebrow eyebrow--plain"><span class="rule"></span>Certifications</p>
+          <ul class="tags tags--light">
+            <li>Advanced Fine-Tuning for LLMs</li><li>AI Agents &amp; Agentic Architecture</li><li>RAG &amp; LangChain Agents</li>
+            <li>Language Modeling with Transformers</li><li>Prompt Engineering</li><li>Responsible AI</li>
+            <li>Deep Learning &amp; RL</li><li>Neural Networks &amp; DL</li><li>DL Models with TensorFlow</li><li>CNNs</li>
+          </ul>
+          <p class="edu__note">IBM · Coursera · DeepLearning.AI · Google</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <p class="eyebrow"><b>04</b><span class="rule"></span>Let's talk</p>
+      <h2 class="contact__title">Have a workflow<br />that should <em>run itself?</em></h2>
+      <a class="contact__mail" href="mailto:Dixit171200@gmail.com">Dixit171200@gmail.com <span>↗</span></a>
+      <ul class="contact__links">
+        <li><a href="#" data-todo="linkedin">LinkedIn</a></li>
+        <li><a href="#" data-todo="github">GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="signature">Utkarsh Dixit</span>
+    <span>© <span id="year">2026</span> · Built with HTML, CSS &amp; GSAP</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
