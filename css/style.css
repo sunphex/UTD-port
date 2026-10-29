@@ -146,12 +146,16 @@ em { font-style: normal; color: var(--gold); }
 .hero__big .ch { display: inline-block; transform-origin: 50% 100%; }
 .hero__sub { font-family: var(--f-display); font-size: clamp(28px, 4.6vw, 66px); margin-top: .18em; letter-spacing: .01em; }
 .hero__words {
-  display: flex; align-items: center; gap: clamp(14px, 4vw, 52px);
+  /* equal outer columns keep the middle word on the page's centre line */
+  display: grid; grid-template-columns: 1fr auto auto auto 1fr; align-items: center;
+  gap: clamp(14px, 4vw, 52px); width: 100%;
   margin-top: 18px;
   font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
 }
-.hero__words .up { transform: translateY(-10px); }
 .hero__words i { width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+.hero__words span { margin-right: -.2em; } /* cancel trailing letter-spacing so dots sit centred */
+.hero__words span:first-child { justify-self: end; }
+.hero__words span:last-child { justify-self: start; }
 .hero__scroll {
   margin-top: 26px; display: flex; flex-direction: column; align-items: center; gap: 8px;
   font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #555;
@@ -477,6 +481,7 @@ em { font-style: normal; color: var(--gold); }
   .hero__based { bottom: 20px; }
   .signature--bl { bottom: 18px; font-size: 26px; }
   .hero__words { gap: 12px; font-size: 9px; letter-spacing: .14em; }
+  .hero__words span { margin-right: -.14em; }
   .about__cols { grid-template-columns: 1fr; }
   .facts { grid-template-columns: repeat(2, 1fr); }
   .service { grid-template-columns: 40px 1fr; padding: 22px 6px 22px 14px; }
