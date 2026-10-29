@@ -330,8 +330,9 @@ em { font-style: normal; color: var(--gold); }
 .pills li { font-size: 11px; border: 1px solid rgba(0,0,0,.25); border-radius: 99px; padding: 4px 11px; font-weight: 500; }
 
 .card__visual {
-  position: relative; background: var(--ink); color: #f2efe9;
-  display: grid; place-items: center; padding: 40px 28px 40px;
+  position: relative; display: grid; place-items: center; overflow: hidden;
+  padding: 44px 36px 120px 36px;
+  background: var(--ink); color: #f2efe9;
   background-image:
     radial-gradient(circle at 70% 20%, rgba(220,184,143,.16), transparent 50%),
     radial-gradient(rgba(255,255,255,.09) 1px, transparent 1px);
@@ -343,26 +344,60 @@ em { font-style: normal; color: var(--gold); }
   color: transparent; -webkit-text-stroke: 1px rgba(220,184,143,.22);
   pointer-events: none;
 }
-.flow { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%; max-width: 280px; }
-.flow span {
-  position: relative; width: 100%; text-align: center;
-  font-family: var(--f-mono); font-size: 12px; letter-spacing: .04em;
-  padding: 10px 14px; border: 1px solid rgba(255,255,255,.18); background: rgba(12,12,12,.85);
+
+/* browser-frame preview: shows assets/work/<slug>.jpg when present, a title card otherwise */
+.browser {
+  position: relative; z-index: 1; width: 100%; max-width: 520px;
+  border: 1px solid rgba(255,255,255,.14); border-radius: 10px; overflow: hidden;
+  background: #1a1916; box-shadow: 0 30px 60px rgba(0,0,0,.5);
+  transition: transform .6s var(--ease);
 }
-.flow span:first-child { border-color: var(--gold); color: var(--gold); }
-.flow span:last-child { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 700; }
-.flow span + span { margin-top: 22px; }
-.flow span + span::before {
-  content: ""; position: absolute; left: 50%; top: -23px; height: 22px; width: 1px;
-  background: repeating-linear-gradient(to bottom, var(--gold) 0 4px, transparent 4px 8px);
-  background-size: 1px 8px; animation: flow 0.8s linear infinite;
+.card__visual:hover .browser { transform: translateY(-6px) rotate(-1deg); }
+.browser__bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.browser__bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.2); }
+.browser__bar span {
+  margin-left: 10px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-family: var(--f-mono); font-size: 10.5px; color: var(--muted);
+  background: rgba(255,255,255,.05); border-radius: 99px; padding: 3px 10px;
 }
-@keyframes flow { to { background-position: 0 8px; } }
+.browser__screen { position: relative; aspect-ratio: 16 / 10; display: grid; place-items: center; overflow: hidden;
+  background: linear-gradient(135deg, #24211c, #121110 60%); }
+.browser__screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.browser__fallback {
+  padding: 0 24px; text-align: center;
+  font-family: var(--f-display); font-size: clamp(24px, 2.6vw, 38px); line-height: 1; text-transform: uppercase;
+  color: var(--gold);
+}
+
+.card__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 18px; background: var(--ink); color: var(--paper);
+  font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  border: 1px solid var(--ink); transition: background .3s, color .3s;
+}
+.btn span { transition: transform .4s var(--ease); }
+.btn:hover span { transform: rotate(45deg); }
+.btn--ghost { background: transparent; color: var(--ink); }
+.btn:hover { background: var(--gold-deep); border-color: var(--gold-deep); color: var(--ink); }
+
+.live { max-width: var(--content); margin: 40px auto 0; }
+.live .eyebrow { margin-bottom: 22px; }
+.live__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 24px; }
+.mini { display: block; }
+.mini .browser { max-width: none; box-shadow: none; }
+.mini:hover .browser { transform: translateY(-6px); border-color: var(--gold); }
+.mini .browser__fallback { font-size: 26px; }
+.mini__kicker { margin-top: 16px; font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.mini h3 { margin-top: 4px; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+.mini h3 span { display: inline-block; color: var(--muted); transition: transform .4s var(--ease), color .3s; }
+.mini:hover h3 span { transform: rotate(45deg); color: var(--gold); }
+.mini p:last-child { margin-top: 4px; font-size: 14px; color: #9d988f; }
 
 .badge--card { right: 22px; bottom: 22px; color: var(--paper); z-index: 2; width: 96px; height: 96px; }
 .badge--card:hover .badge__arrow { color: var(--ink); }
 
-.more { max-width: var(--content); margin: 30px auto 0; }
+.more { max-width: var(--content); margin: 72px auto 0; }
 .more .eyebrow { margin-bottom: 18px; }
 .more ul { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 48px; }
 .more li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
@@ -430,15 +465,8 @@ em { font-style: normal; color: var(--gold); }
 @media (max-width: 960px) {
   .expertise, .edu { grid-template-columns: 1fr; }
   .card { grid-template-columns: 1fr; min-height: 0; position: relative; top: auto; }
-  .card__visual { min-height: 260px; padding-bottom: 110px; }
-  .flow { flex-direction: row; flex-wrap: wrap; justify-content: center; max-width: none; gap: 10px 22px; }
-  .flow span { width: auto; }
-  .flow span + span { margin-top: 0; }
-  .flow span + span::before {
-    top: 50%; left: -22px; width: 22px; height: 1px;
-    background: repeating-linear-gradient(to right, var(--gold) 0 4px, transparent 4px 8px);
-    animation: none;
-  }
+  .card__visual { padding: 32px 20px 110px; }
+  .live__grid { grid-template-columns: repeat(2, 1fr); }
   .more ul { grid-template-columns: 1fr; }
   .timeline > li { grid-template-columns: 1fr; gap: 10px; }
 }
@@ -461,6 +489,7 @@ em { font-style: normal; color: var(--gold); }
   .floaty { font-size: 10px; padding: 5px 8px; }
   .badge--card { width: 78px; height: 78px; right: 14px; bottom: 14px; }
   .badge--card .badge__arrow { width: 32px; height: 32px; }
+  .live__grid { grid-template-columns: 1fr; }
   .more li { flex-direction: column; gap: 2px; }
   .more li span { text-align: left; }
   .stack { gap: 28px; }

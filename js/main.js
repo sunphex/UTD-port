@@ -290,14 +290,14 @@
   });
 
   cards.forEach((card) => {
-    gsap.from(card.querySelectorAll(".flow span"), {
-      opacity: 0, y: 14, stagger: 0.08, duration: 0.5, ease: "power2.out",
+    gsap.from(card.querySelector(".browser"), {
+      y: 60, rotate: 3, opacity: 0, duration: 1, ease: "expo.out",
       scrollTrigger: { trigger: card, start: "top 70%" },
     });
   });
 
   /* ------------------------------------------------- generic reveals */
-  gsap.utils.toArray(".section-title, .expertise__title, .contact__title, .timeline > li, .more li").forEach((el) => {
+  gsap.utils.toArray(".section-title, .expertise__title, .contact__title, .timeline > li, .more li, .mini").forEach((el) => {
     gsap.from(el, {
       y: 40, opacity: 0, duration: 1, ease: "expo.out",
       scrollTrigger: { trigger: el, start: "top 88%" },
