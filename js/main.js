@@ -68,33 +68,48 @@
     const line = loader.querySelector(".hello__line");
     const glow = loader.querySelector(".hello__glow");
     const tip = loader.querySelector(".hello__tip");
+    const seam = loader.querySelector(".loader__seam");
+    const halves = loader.querySelectorAll(".loader__half");
     const len = line.getTotalLength();
     gsap.set([line, glow], { strokeDasharray: len, strokeDashoffset: len });
 
-    // one progress value drives both strokes and the pen tip so they never drift apart
-    const pen = { p: 0 };
-    const drawTo = () => {
-      const off = len * (1 - pen.p);
-      line.style.strokeDashoffset = off;
-      glow.style.strokeDashoffset = off;
-      const pt = line.getPointAtLength(len * pen.p);
-      tip.setAttribute("cx", pt.x);
-      tip.setAttribute("cy", pt.y);
-    };
+    // the curtain: seam draws across, then the two halves part along it
+    const split = (tl, at) => tl
+      .to(seam, { scaleX: 1, duration: 0.6, ease: "expo.out" }, at)
+      .to(halves[0], { yPercent: -101, duration: 1, ease: "expo.inOut" }, "-=0.25")
+      .to(halves[1], { yPercent: 101, duration: 1, ease: "expo.inOut" }, "<")
+      .to(seam, { opacity: 0, scaleY: 6, duration: 0.5, ease: "power2.out" }, "<")
+      .add(intro(), "<0.3")
+      .add(finishLoading, "<0.75");
 
-    const tl = gsap.timeline({ delay: 0.25 });
-    tl.to(tip, { opacity: 1, duration: 0.3, ease: "power1.out" })
-      .to(pen, { p: 1, duration: 2.6, ease: "power2.inOut", onUpdate: drawTo }, "<")
-      .to(tip, { opacity: 0, scale: 0, transformOrigin: "center", duration: 0.4, ease: "power2.in" }, "-=0.2")
-      .to(glow, { opacity: 0.7, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, "-=0.25")
-      .to(".hello", { scale: 1.035, duration: 1, ease: "sine.inOut" }, "<")
-      .to(".hello", { opacity: 0, y: -24, scale: 0.97, filter: "blur(10px)", duration: 0.7, ease: "power3.in" }, "-=0.1")
-      // panel: point -> hairline -> box -> full screen, one element so the morph stays seamless
-      .to(".loader__panel", { clipPath: "inset(49.85% 6% 49.85% 6%)", duration: 0.8, ease: "expo.inOut" }, "-=0.25")
-      .to(".loader__panel", { clipPath: "inset(32% 24% 32% 24%)", duration: 0.7, ease: "expo.inOut" })
-      .to(".loader__panel", { clipPath: "inset(0% 0% 0% 0%)", duration: 0.9, ease: "expo.inOut" })
-      .add(finishLoading)
-      .add(intro(), "-=0.1");
+    let seen = false;
+    try { seen = sessionStorage.getItem("ud-intro") === "1"; sessionStorage.setItem("ud-intro", "1"); } catch (e) { /* storage blocked: play the full intro */ }
+
+    if (seen) {
+      // returning in the same session: skip the handwriting, just open the curtain
+      gsap.set(".hello", { autoAlpha: 0 });
+      split(gsap.timeline({ delay: 0.1 }), 0);
+    } else {
+      // one progress value drives both strokes and the pen tip so they never drift apart
+      const pen = { p: 0 };
+      const drawTo = () => {
+        const off = len * (1 - pen.p);
+        line.style.strokeDashoffset = off;
+        glow.style.strokeDashoffset = off;
+        const pt = line.getPointAtLength(len * pen.p);
+        tip.setAttribute("cx", pt.x);
+        tip.setAttribute("cy", pt.y);
+      };
+
+      const tl = gsap.timeline({ delay: 0.25 });
+      tl.to(tip, { opacity: 1, duration: 0.3, ease: "power1.out" })
+        .to(pen, { p: 1, duration: 2.6, ease: "power2.inOut", onUpdate: drawTo }, "<")
+        .to(tip, { opacity: 0, scale: 0, transformOrigin: "center", duration: 0.4, ease: "power2.in" }, "-=0.2")
+        .to(glow, { opacity: 0.7, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, "-=0.25")
+        // "hello" flattens into the seam line
+        .to(".hello", { scaleY: 0.04, opacity: 0, duration: 0.5, ease: "power3.in" }, "+=0.15");
+      split(tl, "-=0.2");
+    }
   }
 
   /* -------------------------------------------------------------- cursor */

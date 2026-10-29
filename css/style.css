@@ -81,19 +81,23 @@ em { font-style: normal; color: var(--gold); }
    -------------------------------------------------------------------------- */
 .loader {
   position: fixed; inset: 0; z-index: 100;
-  background: var(--ink);
   display: grid; place-items: center;
 }
-.hello { width: min(520px, 78vw); overflow: visible; will-change: transform, opacity, filter; }
+/* two halves of the curtain; together they cover the page until they split along the seam */
+.loader__half { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--ink); will-change: transform; }
+.loader__half--top { top: 0; }
+.loader__half--bot { bottom: 0; }
+.loader__seam {
+  position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; z-index: 2;
+  background: linear-gradient(90deg, transparent, var(--gold) 12%, #f6e2c4 50%, var(--gold) 88%, transparent);
+  box-shadow: 0 0 14px rgba(220,184,143,.75), 0 0 40px rgba(220,184,143,.35);
+  transform: scaleX(0);
+}
+.hello { position: relative; z-index: 3; width: min(520px, 78vw); overflow: visible; will-change: transform, opacity, filter; }
 .hello path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .hello__line { stroke: url(#hello-grad); stroke-width: 9; }
 .hello__glow { stroke: #dcb88f; stroke-width: 14; opacity: .35; filter: url(#hello-blur); }
 .hello__tip { fill: #fff6e8; opacity: 0; filter: drop-shadow(0 0 6px #f3d3a6) drop-shadow(0 0 16px rgba(220,184,143,.8)); }
-.loader__panel {
-  position: absolute; inset: 0; background: var(--paper);
-  clip-path: inset(50% 50% 50% 50%);
-  will-change: clip-path;
-}
 
 /* --------------------------------------------------------------------------
    Cursor
