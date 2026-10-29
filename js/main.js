@@ -82,34 +82,25 @@
       .add(intro(), "<0.3")
       .add(finishLoading, "<0.75");
 
-    let seen = false;
-    try { seen = sessionStorage.getItem("ud-intro") === "1"; sessionStorage.setItem("ud-intro", "1"); } catch (e) { /* storage blocked: play the full intro */ }
+    // one progress value drives both strokes and the pen tip so they never drift apart
+    const pen = { p: 0 };
+    const drawTo = () => {
+      const off = len * (1 - pen.p);
+      line.style.strokeDashoffset = off;
+      glow.style.strokeDashoffset = off;
+      const pt = line.getPointAtLength(len * pen.p);
+      tip.setAttribute("cx", pt.x);
+      tip.setAttribute("cy", pt.y);
+    };
 
-    if (seen) {
-      // returning in the same session: skip the handwriting, just open the curtain
-      gsap.set(".hello", { autoAlpha: 0 });
-      split(gsap.timeline({ delay: 0.1 }), 0);
-    } else {
-      // one progress value drives both strokes and the pen tip so they never drift apart
-      const pen = { p: 0 };
-      const drawTo = () => {
-        const off = len * (1 - pen.p);
-        line.style.strokeDashoffset = off;
-        glow.style.strokeDashoffset = off;
-        const pt = line.getPointAtLength(len * pen.p);
-        tip.setAttribute("cx", pt.x);
-        tip.setAttribute("cy", pt.y);
-      };
-
-      const tl = gsap.timeline({ delay: 0.25 });
-      tl.to(tip, { opacity: 1, duration: 0.3, ease: "power1.out" })
-        .to(pen, { p: 1, duration: 2.6, ease: "power2.inOut", onUpdate: drawTo }, "<")
-        .to(tip, { opacity: 0, scale: 0, transformOrigin: "center", duration: 0.4, ease: "power2.in" }, "-=0.2")
-        .to(glow, { opacity: 0.7, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, "-=0.25")
-        // "hello" flattens into the seam line
-        .to(".hello", { scaleY: 0.04, opacity: 0, duration: 0.5, ease: "power3.in" }, "+=0.15");
-      split(tl, "-=0.2");
-    }
+    const tl = gsap.timeline({ delay: 0.25 });
+    tl.to(tip, { opacity: 1, duration: 0.3, ease: "power1.out" })
+      .to(pen, { p: 1, duration: 2.6, ease: "power2.inOut", onUpdate: drawTo }, "<")
+      .to(tip, { opacity: 0, scale: 0, transformOrigin: "center", duration: 0.4, ease: "power2.in" }, "-=0.2")
+      .to(glow, { opacity: 0.7, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, "-=0.25")
+      // "hello" flattens into the seam line
+      .to(".hello", { scaleY: 0.04, opacity: 0, duration: 0.5, ease: "power3.in" }, "+=0.15");
+    split(tl, "-=0.2");
   }
 
   /* -------------------------------------------------------------- cursor */
