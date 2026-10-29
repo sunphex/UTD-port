@@ -8,10 +8,9 @@ Open `index.html`, or serve the folder (for example with the VS Code Live Server
 
 ## Still to fill in
 
-- Project screenshots — save each as `assets/work/<slug>.jpg` (16:10 works best) and it replaces the title card in that browser frame.
-  Slugs: `juris-atlas`, `lawyer-console`, `legal-cv`, `google-ads`, `seo-blog`, `legal-chat`, `linkedin-harvest`,
-  `linkedin-viral`, `instagram-viral`, `reddit-quora`, `flix-agent`, `clarity-hub`.
 - GitHub URL in the Contact section (`data-todo` link).
+
+Project screenshots live in `assets/work/<slug>.jpg` (16:10); replace a file to update its card.
 
 ## Structure
 
