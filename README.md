@@ -8,7 +8,6 @@ Open `index.html`, or serve the folder (for example with the VS Code Live Server
 
 ## Still to fill in
 
-- `assets/profile.jpg` — your photo for the About section (a portrait, roughly 4:5). Until it exists, a "UD" monogram shows instead.
 - Project links — each card's **View project** badge points to `#`. Swap in GitHub repos or demo videos.
 - LinkedIn / GitHub URLs in the Contact section (`data-todo` links).
 

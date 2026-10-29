@@ -19,6 +19,8 @@
   --f-script: "Mrs Saint Delafield", cursive;
 
   --gutter: clamp(16px, 4vw, 56px);
+  --content: 1240px;
+  --pad-x: max(var(--gutter), calc((100% - var(--content)) / 2));
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -192,23 +194,10 @@ em { font-style: normal; color: var(--gold); }
 .string { width: min(640px, 80vw); height: 120px; margin: 4px 0 40px; overflow: visible; }
 .string path { fill: none; stroke: var(--gold); stroke-width: 2.5; stroke-linecap: round; }
 
-.about__grid {
-  width: 100%; max-width: 1240px;
-  display: grid; grid-template-columns: minmax(220px, 0.8fr) 2fr; gap: clamp(28px, 5vw, 72px);
-  align-items: end;
-}
-.about__photo {
-  position: relative; aspect-ratio: 4 / 5;
-  background: linear-gradient(160deg, #1d1b18, #0f0f0f);
-  border: 1px solid var(--line); overflow: hidden;
-}
-.about__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(.2) contrast(1.05); }
-.about__initials {
-  position: absolute; inset: 0; display: grid; place-items: center;
-  font-family: var(--f-display); font-size: clamp(80px, 10vw, 140px); color: rgba(220, 184, 143, .16);
-}
+.about__grid { width: 100%; max-width: var(--content); }
 .about__body .eyebrow { margin-bottom: 18px; }
 .about__headline {
+  max-width: 22ch;
   font-weight: 800; text-transform: uppercase; letter-spacing: -0.035em; line-height: 1.02;
   font-size: clamp(30px, 4.4vw, 60px);
 }
@@ -227,7 +216,7 @@ em { font-style: normal; color: var(--gold); }
    -------------------------------------------------------------------------- */
 .expertise {
   position: relative; overflow: hidden;
-  padding: clamp(80px, 10vw, 140px) var(--gutter);
+  padding: clamp(80px, 10vw, 140px) var(--pad-x);
   display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(32px, 6vw, 96px);
   background-color: var(--ink-2);
   background-image:
@@ -311,7 +300,7 @@ em { font-style: normal; color: var(--gold); }
   font-size: clamp(26px, 3vw, 38px); letter-spacing: .02em; text-transform: uppercase;
 }
 
-.stack { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 10vh; padding-bottom: 6vh; }
+.stack { max-width: var(--content); margin: 0 auto; display: flex; flex-direction: column; gap: 10vh; padding-bottom: 6vh; }
 .card {
   position: sticky; top: calc(10vh + var(--i, 0) * 14px);
   min-height: min(600px, 78vh);
@@ -373,7 +362,7 @@ em { font-style: normal; color: var(--gold); }
 .badge--card { right: 22px; bottom: 22px; color: var(--paper); z-index: 2; width: 96px; height: 96px; }
 .badge--card:hover .badge__arrow { color: var(--ink); }
 
-.more { max-width: 1240px; margin: 30px auto 0; }
+.more { max-width: var(--content); margin: 30px auto 0; }
 .more .eyebrow { margin-bottom: 18px; }
 .more ul { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 48px; }
 .more li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
@@ -382,7 +371,7 @@ em { font-style: normal; color: var(--gold); }
 /* --------------------------------------------------------------------------
    Experience
    -------------------------------------------------------------------------- */
-.experience { padding: clamp(80px, 10vw, 140px) var(--gutter); max-width: 1340px; margin: 0 auto; }
+.experience { padding: clamp(80px, 10vw, 140px) var(--pad-x); }
 .experience > .eyebrow { margin-bottom: 14px; }
 .timeline { margin-top: 56px; border-top: 1px solid var(--line); }
 .timeline > li {
@@ -430,7 +419,7 @@ em { font-style: normal; color: var(--gold); }
 
 .footer {
   display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-  padding: 26px var(--gutter); border-top: 1px solid var(--line);
+  padding: 26px var(--pad-x); border-top: 1px solid var(--line);
   font-size: 12px; color: var(--muted);
 }
 .footer .signature { color: var(--gold); opacity: 1; font-size: 30px; }
@@ -439,8 +428,7 @@ em { font-style: normal; color: var(--gold); }
    Responsive
    -------------------------------------------------------------------------- */
 @media (max-width: 960px) {
-  .about__grid, .expertise, .edu { grid-template-columns: 1fr; }
-  .about__photo { max-width: 320px; }
+  .expertise, .edu { grid-template-columns: 1fr; }
   .card { grid-template-columns: 1fr; min-height: 0; position: relative; top: auto; }
   .card__visual { min-height: 260px; padding-bottom: 110px; }
   .flow { flex-direction: row; flex-wrap: wrap; justify-content: center; max-width: none; gap: 10px 22px; }

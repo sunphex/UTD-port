@@ -152,10 +152,6 @@
     opacity: 1, stagger: 0.1, ease: "none",
     scrollTrigger: { trigger: ".about__headline", start: "top 85%", end: "bottom 45%", scrub: true },
   });
-  gsap.from(".about__photo", {
-    clipPath: "inset(100% 0 0 0)", duration: 1.2, ease: "expo.out",
-    scrollTrigger: { trigger: ".about__grid", start: "top 80%" },
-  });
 
   /* ------------------------------------------- expertise: floating logos */
   const field = document.querySelector(".float-field");
