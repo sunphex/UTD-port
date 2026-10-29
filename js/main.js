@@ -4,8 +4,6 @@
   const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
   const hasGsap = typeof window.gsap !== "undefined";
 
-  document.getElementById("year").textContent = new Date().getFullYear();
-
   if (!hasGsap) {
     // CDN blocked: show the page without motion.
     document.querySelector(".loader")?.remove();
