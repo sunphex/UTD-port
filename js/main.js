@@ -67,19 +67,36 @@
   if (reduceMotion) {
     finishLoading();
   } else {
-    const helloText = loader.querySelector("text");
-    const tl = gsap.timeline({ delay: 0.2 });
-    tl.to(helloText, { strokeDashoffset: 0, duration: 1.8, ease: "power1.inOut" })
-      .to(helloText, { fill: getComputedStyle(document.documentElement).getPropertyValue("--gold"), duration: 0.4 }, "-=0.3")
-      .to(".loader__hello", { opacity: 0, y: -10, duration: 0.35 }, "+=0.25")
-      .to(".wipe-line", { scale: 1, duration: 0.45, ease: "power3.inOut" })
-      .to(".wipe-bar", { scale: 1, duration: 0.35, ease: "power3.out" }, "-=0.1")
-      .to(".wipe-box", { scale: 1, duration: 0.35, ease: "power3.out" }, "-=0.15")
-      .to(".wipe-box", { width: "100vw", height: "100vh", duration: 0.7, ease: "expo.inOut" })
-      .set(loader, { background: "transparent" })
-      .to(".loader__wipe", { opacity: 0, duration: 0.35 })
-      .add(intro(), "-=0.35")
-      .add(finishLoading, "-=1.4");
+    const line = loader.querySelector(".hello__line");
+    const glow = loader.querySelector(".hello__glow");
+    const tip = loader.querySelector(".hello__tip");
+    const len = line.getTotalLength();
+    gsap.set([line, glow], { strokeDasharray: len, strokeDashoffset: len });
+
+    // one progress value drives both strokes and the pen tip so they never drift apart
+    const pen = { p: 0 };
+    const drawTo = () => {
+      const off = len * (1 - pen.p);
+      line.style.strokeDashoffset = off;
+      glow.style.strokeDashoffset = off;
+      const pt = line.getPointAtLength(len * pen.p);
+      tip.setAttribute("cx", pt.x);
+      tip.setAttribute("cy", pt.y);
+    };
+
+    const tl = gsap.timeline({ delay: 0.25 });
+    tl.to(tip, { opacity: 1, duration: 0.3, ease: "power1.out" })
+      .to(pen, { p: 1, duration: 2.6, ease: "power2.inOut", onUpdate: drawTo }, "<")
+      .to(tip, { opacity: 0, scale: 0, transformOrigin: "center", duration: 0.4, ease: "power2.in" }, "-=0.2")
+      .to(glow, { opacity: 0.7, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, "-=0.25")
+      .to(".hello", { scale: 1.035, duration: 1, ease: "sine.inOut" }, "<")
+      .to(".hello", { opacity: 0, y: -24, scale: 0.97, filter: "blur(10px)", duration: 0.7, ease: "power3.in" }, "-=0.1")
+      // panel: point -> hairline -> box -> full screen, one element so the morph stays seamless
+      .to(".loader__panel", { clipPath: "inset(49.85% 6% 49.85% 6%)", duration: 0.8, ease: "expo.inOut" }, "-=0.25")
+      .to(".loader__panel", { clipPath: "inset(32% 24% 32% 24%)", duration: 0.7, ease: "expo.inOut" })
+      .to(".loader__panel", { clipPath: "inset(0% 0% 0% 0%)", duration: 0.9, ease: "expo.inOut" })
+      .add(finishLoading)
+      .add(intro(), "-=0.1");
   }
 
   /* -------------------------------------------------------------- cursor */

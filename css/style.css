@@ -84,18 +84,16 @@ em { font-style: normal; color: var(--gold); }
   background: var(--ink);
   display: grid; place-items: center;
 }
-.loader__hello { width: min(360px, 70vw); overflow: visible; }
-.loader__hello text {
-  font-family: "Pacifico", cursive; font-size: 110px;
-  fill: transparent; stroke: var(--gold); stroke-width: 2.2;
-  stroke-dasharray: 900; stroke-dashoffset: 900;
-  stroke-linecap: round; stroke-linejoin: round;
+.hello { width: min(520px, 78vw); overflow: visible; will-change: transform, opacity, filter; }
+.hello path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.hello__line { stroke: url(#hello-grad); stroke-width: 9; }
+.hello__glow { stroke: #dcb88f; stroke-width: 14; opacity: .35; filter: url(#hello-blur); }
+.hello__tip { fill: #fff6e8; opacity: 0; filter: drop-shadow(0 0 6px #f3d3a6) drop-shadow(0 0 16px rgba(220,184,143,.8)); }
+.loader__panel {
+  position: absolute; inset: 0; background: var(--paper);
+  clip-path: inset(50% 50% 50% 50%);
+  will-change: clip-path;
 }
-.loader__wipe { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
-.loader__wipe span { position: absolute; background: var(--paper); transform: scale(0); }
-.wipe-line { width: 80vw; height: 2px; }
-.wipe-bar  { width: 50vw; height: 40px; }
-.wipe-box  { width: 28vw; height: 26vh; }
 
 /* --------------------------------------------------------------------------
    Cursor

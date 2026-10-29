@@ -7,7 +7,7 @@
   <meta name="description" content="Utkarsh Dixit — AI Engineer building agentic AI systems, multi-agent orchestration and n8n / MCP workflow automation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;800&family=Space+Mono:wght@400;700&family=Pacifico&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;800&family=Space+Mono:wght@400;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="is-loading">
@@ -27,14 +27,20 @@
 
   <!-- Preloader -->
   <div class="loader" aria-hidden="true">
-    <svg class="loader__hello" viewBox="0 0 400 160">
-      <text x="50%" y="62%" text-anchor="middle">hello</text>
+    <svg class="hello" viewBox="0 0 500 230">
+      <defs>
+        <linearGradient id="hello-grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#f6e2c4" />
+          <stop offset="0.55" stop-color="#dcb88f" />
+          <stop offset="1" stop-color="#b98e5e" />
+        </linearGradient>
+        <filter id="hello-blur" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="7" /></filter>
+      </defs>
+      <path class="hello__glow" d="M22 176C50 150 92 96 104 62C112 38 98 24 86 44C74 66 66 140 64 190C72 152 92 128 112 130C132 132 128 164 132 178C136 194 156 194 170 180C188 166 212 150 206 132C200 116 176 122 172 146C168 172 186 192 212 186C234 180 248 150 260 110C272 70 282 36 266 34C250 32 242 70 240 110C238 150 242 188 264 188C284 188 298 150 310 110C322 70 332 36 316 34C300 32 292 70 290 110C288 150 292 188 316 188C334 188 342 170 348 152C356 132 380 124 394 140C408 158 396 192 370 188C348 184 346 158 362 144C374 134 396 134 420 138C440 142 458 138 474 128" />
+      <path class="hello__line" d="M22 176C50 150 92 96 104 62C112 38 98 24 86 44C74 66 66 140 64 190C72 152 92 128 112 130C132 132 128 164 132 178C136 194 156 194 170 180C188 166 212 150 206 132C200 116 176 122 172 146C168 172 186 192 212 186C234 180 248 150 260 110C272 70 282 36 266 34C250 32 242 70 240 110C238 150 242 188 264 188C284 188 298 150 310 110C322 70 332 36 316 34C300 32 292 70 290 110C288 150 292 188 316 188C334 188 342 170 348 152C356 132 380 124 394 140C408 158 396 192 370 188C348 184 346 158 362 144C374 134 396 134 420 138C440 142 458 138 474 128" />
+      <circle class="hello__tip" r="7" cx="22" cy="176" />
     </svg>
-    <div class="loader__wipe">
-      <span class="wipe-line"></span>
-      <span class="wipe-bar"></span>
-      <span class="wipe-box"></span>
-    </div>
+    <div class="loader__panel"></div>
   </div>
 
   <!-- Cursor -->
