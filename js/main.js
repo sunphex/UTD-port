@@ -312,7 +312,7 @@
   });
 
   /* ------------------------------------------------- generic reveals */
-  gsap.utils.toArray(".section-title, .expertise__title, .contact__title, .timeline > li, .more li, .mini").forEach((el) => {
+  gsap.utils.toArray(".section-title, .expertise__title, .contact__title, .timeline > li, .builds__head, .builds li, .mini").forEach((el) => {
     gsap.from(el, {
       y: 40, opacity: 0, duration: 1, ease: "expo.out",
       scrollTrigger: { trigger: el, start: "top 88%" },
